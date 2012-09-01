@@ -9,7 +9,7 @@ DownloadHandler* Quote::mDH = DownloadHandler::getDownloadHandler();
 
 // Constructors
 
-// Should not be used
+// should not be used !! testing
 Quote::Quote() {}
 
 Quote::Quote(string mSymbol, string mName, string mDate, string mTime, double mPrice, double mChange, int n) {
