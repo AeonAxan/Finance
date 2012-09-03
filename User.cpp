@@ -176,6 +176,6 @@ double User::getStockWorth()	{ return stockWorth; }
 double User::getCashInHand()	{ return cashInHand; }
 double User::getTotalWorth()	{ return stockWorth + cashInHand; }
 
-void User::setName(char *n) {
+void User::setName(string n) {
 	name = n;
 }

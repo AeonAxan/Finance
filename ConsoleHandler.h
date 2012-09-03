@@ -3,6 +3,7 @@
 using std::string;
 
 #include "User.h"
+#include "DownloadHandler.h"
 
 /*
  * Handles every user interaction with the console. Including the user input
@@ -14,12 +15,18 @@ public:
 		BUY,
 		SELL,
 		PORTFOLIO,
-		STATUS,                              //changed from history to status
-		EXIT
+		CONNECTIVITY,                              //changed from history to status
+		EXIT,
+		HIGH_SCORE
 	};
 
 private:
 	bool connected;					// Keeps track of wheather we have an active internet connection
+
+	// Utilities
+	string space;
+	void displayStats();
+	bool isCinBad();
 
 	User *user;
 
@@ -27,12 +34,14 @@ public:
 	
 	ConsoleHandler();				// initializes the class, also intializes the global User object
 
-	void newUser();					// Displays the sign up form, sets the user name in the user object
+	void loading(char *);
+	bool newUser();					// Displays the sign up form, sets the user name in the user object
+
 	menuSelection mainMenu();		// Displays the main menu to the user, returns the enum of the selction
 	void buyMenu();					// Displays the buy stock menu to the user
 	void sellMenu();				// Displays the stock sell menu to the user
 	void showPortfolio();			// Displays the portfolio of the user
-	// showHistory(); TODO
+	void showScores(DownloadHandler &);				// Displays the global scores
 
 	void setConnectivity(bool);		// Sets the internet connectivity state
 };

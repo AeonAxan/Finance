@@ -54,7 +54,7 @@ public:
 	Quote(string, int n = 1);												// Build From csv string, second param = num
 	Quote(string, string, string, string, double, double, int n = 1);		// Build from values
 
-	static Quote get(char *, int n = 1);		// Quote Factory. Creates a Quote object from the given symbol
+	static Quote get(const char *, int n = 1);		// Quote Factory. Creates a Quote object from the given symbol
 
 	void updateOriginals();						// Copies all the values in n data to o data. Refresh should have been called before
 	bool refresh();								// Downloads updated data, original data kept intact

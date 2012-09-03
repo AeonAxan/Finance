@@ -13,7 +13,7 @@ using std::vector;
  * Keeps track of all the details of the current User
  */
 class User {
-	
+private:
 	// Serializable User class struct
 	struct UserSerialized {
 		double cashInHand, stockWorth, totalWorth;
@@ -41,6 +41,8 @@ public:
 	static User * getInstance();
 
 	// Deserializing/Serializing the User class
+
+	// deserialize will return false if the user is using the app for the first time
 	bool deserialize();
 	bool serialize();
 
@@ -72,7 +74,7 @@ public:
 	double getCashInHand();
 	double getTotalWorth();
 
-	void setName(char *);
+	void setName(string);
 	
 	string getError();
 

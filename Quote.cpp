@@ -84,7 +84,7 @@ string Quote::encode() {
 	return out;
 }
 
-Quote Quote::get(char *symbol, int n) {
+Quote Quote::get(const char *symbol, int n) {
 	string res = mDH->download(symbol);
 
 	if(mDH->success()) {

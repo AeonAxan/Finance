@@ -1,6 +1,11 @@
-#include "DownloadHandler.h"
+#include <string>
 
-using std::string;
+#include "DownloadHandler.h"
+#include "User.h"
+
+#include <vector>
+
+using namespace std;
 
 DownloadHandler* DownloadHandler::mInstance = NULL;
 
@@ -93,3 +98,50 @@ bool DownloadHandler::isConnected() {
 DownloadHandler::~DownloadHandler() {
 	curl_easy_cleanup(curl);
 }
+
+
+// Scores
+
+void DownloadHandler::uploadScore(string username, double score) {
+	char URL[150];
+	sprintf(URL, "http://warhammer0.site50.net/finance.php?username=%s&score=%f", username.c_str(), score);
+
+	curl_easy_setopt(curl, CURLOPT_URL, URL);
+
+	curl_easy_perform(curl);
+}
+
+vector<DownloadHandler::Score> DownloadHandler::downloadScore() {
+	oBuffer = "";
+
+	curl_easy_setopt(curl, CURLOPT_URL, "http://warhammer0.site50.net/get.php");
+
+	result = curl_easy_perform(curl);
+
+	vector<Score> v;
+
+	if(!success())
+		return v;
+
+	int x;
+	string username;
+	double score;
+
+	while((x = oBuffer.find(',')) != string::npos) {
+		Score s;
+		username = oBuffer.substr(0, x);
+		oBuffer.erase(0, x+1);
+
+		x = oBuffer.find(',');
+		score = atof(oBuffer.substr(0, x).c_str());
+		oBuffer.erase(0, x+1);
+
+		s.username = username;
+		s.val = score;
+
+		v.push_back(s);
+	}
+
+	return v;
+}
+

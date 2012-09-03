@@ -2,9 +2,11 @@
 #define _DHANDLER
 
 #include <string>
+#include <vector>
 #include <curl/curl.h>
 
 using std::string;
+using std::vector;
 
 /*
  * A simple wrapper for libcurl
@@ -33,6 +35,11 @@ private:
 	static int writer(char *, size_t, size_t, void *);
 	
 public:
+	struct Score {
+		string username;
+		double val;
+	};
+
 	static DownloadHandler* getDownloadHandler();
 
 	bool success();							// Was the last executed curl request a success
@@ -43,6 +50,11 @@ public:
 	 * the downloaded data as a string. 
 	 */
 	string download(const char *);
+
+	// Scores
+	void uploadScore(string, double);
+	vector<DownloadHandler::Score> downloadScore();
+
 
 	bool isConnected();						// Check if we have a working internet connection
 
