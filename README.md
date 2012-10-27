@@ -1,4 +1,4 @@
-A simple console based Stock Market 'Game'
+A simple console based Stock Market Game
 ==============
 
 Description
@@ -10,12 +10,14 @@ The game will keep track of your portfolio and uses simple binary files to remem
 This was developed in a team of three, as a project for a beginners C++ class. 
 The display for the game is console based text, and nothing fancy. 
 
-We use Yahoo! Finance for the real time stock data. 
+We use **Yahoo! Finance** for the real time stock data. 
 
-Libraries used:
+Libraries used
+--------------
 - libCurl
 
-The Team:
+The Team
+--------------
 - Aeon Axan
 - Deepak Benny
 - Kevin Sunny
