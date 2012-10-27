@@ -46,7 +46,7 @@ public:
 	string getError();						// If applicable, the error desc of the last executed request
 
 	/*
-	 * The main Download Method, Takes in the URL and returns
+	 * The main Download Method, Takes in the Quote name and returns
 	 * the downloaded data as a string. 
 	 */
 	string download(const char *);
